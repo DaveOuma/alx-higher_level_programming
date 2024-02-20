@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-"""Defines an object attribute lookup function."""
+
+"""
+This script contains functions related to object introspection and inheritance in Python.
+"""
+
 def lookup(obj):
     """
     Returns a list of available attributes and methods of an object.
@@ -12,14 +16,36 @@ def lookup(obj):
     """
     return dir(obj)
 
-class MyClass1(object):
-    pass
-
-class MyClass2(object):
-    my_attr1 = 3
-    def my_meth(self):
+class BaseClass:
+    """This is a superclass, baseclass, or parentclass."""
+    def __init__(self):
         pass
 
-print(lookup(MyClass1))
-print(lookup(MyClass2))
-print(lookup(int))
+    def example_method(self):
+        """An example method."""
+        pass
+
+class SubClass(BaseClass):
+    """This is a subclass."""
+    def __init__(self):
+        super().__init__()
+
+    def new_method(self):
+        """A new method specific to the subclass."""
+        pass
+
+def main():
+    """Main function to demonstrate usage."""
+    obj = SubClass()
+    print("Attributes and methods of SubClass:")
+    print(lookup(obj))
+
+    print("\nAttributes and methods of BaseClass:")
+    print(lookup(BaseClass))
+
+    print("\nAttributes and methods of int class:")
+    print(lookup(int))
+
+if __name__ == "__main__":
+    main()
+
